@@ -38,7 +38,9 @@ describe('Crear page publicado', () => {
         cy.get('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger').click();
         cy.wait(6000);
 
-        //And I click Schedule button And I wait for 6 seconds
+        //And I publish it schedule I wait for 6 seconds
+        cy.get('.gh-publishmenu-section div.gh-publishmenu-radio:nth-child(2) .gh-publishmenu-radio-content .gh-publishmenu-radio-label').click();
+        cy.wait(6000);
         cy.get('.gh-publishmenu-footer .gh-publishmenu-button').click();
         cy.wait(6000);
 
