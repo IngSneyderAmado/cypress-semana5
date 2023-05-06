@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import configJson from '../../config/config.json';
 
 let pageData = {
     title: faker.name.findName(),
@@ -13,10 +14,10 @@ describe('Crear page publicado', () => {
         cy.wait(5000)
       
         //When I enter email "<Usuario1>"
-        cy.get('#ember7').type('juandacalji@gmail.com')
+        cy.get('#ember7').type(configJson.user)
       
         //And I enter password "<Password1>"
-        cy.get('#ember10').type('1q2w3e4r5t6y7u8i9o')
+        cy.get('#ember10').type(configJson.password)
       
         //And I click next
         cy.get('#ember12').click()

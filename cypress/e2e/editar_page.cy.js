@@ -3,7 +3,9 @@ import configJson from '../../config/config.json';
 
 let pageData = {
     title: faker.name.findName(),
-    description: faker.name.findName()
+    description: faker.name.findName(),
+    title_2: faker.name.findName(),
+    description_2: faker.name.findName()
 }
 
 describe('Crear page publicado', () => {
@@ -37,19 +39,43 @@ describe('Crear page publicado', () => {
      
         //And I click in Publish button And I wait for 6 seconds
         cy.get('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger').click();
-        cy.wait(6000);
+        cy.wait(3000);
 
         //And I click Schedule button And I wait for 6 seconds
         cy.get('.gh-publishmenu-footer .gh-publishmenu-button').click();
-        cy.wait(6000);
+        cy.wait(3000);
 
         //And I get back to page list I wait for 2 seconds
         cy.get("a[href='#/pages/']").click();
-        cy.wait(6000);
+        cy.wait(3000);
 
         //Then I check Page with title "$$name_1" is in the list 
         cy.get("h3.gh-content-entry-title").contains(pageData.title).should('exist');
+        cy.wait(3000);
 
+        //And I select the Page with title "$$name_1" And I wait for 2 seconds
+        cy.get("h3.gh-content-entry-title").contains(pageData.title).click()
+        cy.wait(3000);
+
+        //And I write in Page title "$name_2" And I Write in Page text "$string_2"
+        cy.get('.gh-editor-title.ember-text-area').clear().type(pageData.title_2);
+        cy.get('.koenig-editor__editor-wrapper').clear().type(pageData.description_2);
+        cy.wait(3000);
+
+        //And I click in Publish button And I wait for 6 seconds
+        cy.get('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger').click();
+        cy.wait(3000);
+
+        //And I click Schedule button And I wait for 6 seconds
+        cy.get('.gh-publishmenu-footer .gh-publishmenu-button').click();
+        cy.wait(3000);
+
+        //And I get back to page list I wait for 2 seconds
+        cy.get("a[href='#/pages/']").click();
+        cy.wait(3000);
+
+        //Then I check Post with title "$$name_1" is in the list 
+        cy.get("h3.gh-content-entry-title").contains(pageData.title_2).should('exist');
         });
 
     })
