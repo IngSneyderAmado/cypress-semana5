@@ -1,0 +1,16 @@
+describe('edit info general', () => {
+    it('Editar informacion titulo y descripcion de la pagina ', () => {
+      cy.visit('http://localhost:2368/ghost')
+      cy.wait(2000)
+      cy.get('input[name="identification"]').type('pruebasautomatizadas@uniandes.edu.co')
+      cy.wait(2000)
+      cy.get('input[name="password"]').type('pruebasautomatizadas')
+      cy.wait(2000)
+      cy.get('button[class="login gh-btn gh-btn-blue gh-btn-block gh-btn-icon ember-view"]').click()
+      cy.wait(2000)
+      cy.get('a[href="#/settings/general/"]').click()
+      cy.wait(2000)
+      cy.get('label[class="switch"]').click()
+      cy.wait(2000)
+    })
+})
