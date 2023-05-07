@@ -1,5 +1,5 @@
-describe('Eliminar tag', () => {
-    it('Se elimina un tag desde el inicio de sesión hasta la finalización de la eliminación', () => {
+describe('Ver internal tags', () => {
+    it('Se revisar la pestaña internal tags desde el inicio de sesión hasta la finalización de la creación', () => {
       cy.visit('http://localhost:2368/ghost')
       cy.wait(2000)
       cy.get('input[name="identification"]').type('pruebasautomatizadas@uniandes.edu.co')
@@ -14,19 +14,14 @@ describe('Eliminar tag', () => {
       cy.wait(2000)
       cy.get('#tag-name').type('Tag')
       cy.wait(2000)
-      cy.get('#tag-description').type('Se elimina un tag de prueba para validar la funcionalidad')
+      cy.get('#tag-description').type('Se crea un tag de prueba para validar la funcionalidad')
       cy.wait(2000)
       cy.get('button[class="gh-btn gh-btn-blue gh-btn-icon ember-view"]').click()
       cy.wait(2000)
-      cy.get('a[href="#/tags/"]').click()
+      cy.get('a[href="#/tags/"][data-cypress-el="true"]').click()
       cy.wait(2000)
       cy.get("h3.gh-tag-list-name").contains("Tag").should('exist');
-      cy.wait(2000)
-      cy.contains('h3', 'Tag').click()
-      cy.wait(5000)
-      cy.get('button[class="gh-btn gh-btn-red gh-btn-icon mb15"]').click()
-      cy.wait(2000)
-      cy.get('button[class="gh-btn gh-btn-red gh-btn-icon ember-view"]').click()
+      cy.get('section.view-actions div.gh-contentfilter button:last-child').click()
       cy.wait(2000)
     })
-  })
+})
