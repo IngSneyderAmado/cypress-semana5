@@ -8,7 +8,7 @@ describe('Crear tag', () => {
     cy.wait(2000)
     cy.get('button[class="login gh-btn gh-btn-blue gh-btn-block gh-btn-icon ember-view"]').click()
     cy.wait(2000)
-    cy.get('a[href="#/tags/"][data-cypress-el="true"]').click()
+    cy.get('a[href="#/tags/"]').click()
     cy.wait(2000)
     cy.get('a[href="#/tags/new/"]').click()
     cy.wait(2000)
