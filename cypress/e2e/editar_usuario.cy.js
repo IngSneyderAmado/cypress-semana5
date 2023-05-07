@@ -1,0 +1,22 @@
+describe('editar usuario', () => {
+    it('Se hace editar al usuario', () => {
+      cy.visit('http://localhost:2368/ghost')
+      cy.wait(2000)
+      cy.get('input[name="identification"]').type('pruebasautomatizadas@uniandes.edu.co')
+      cy.wait(2000)
+      cy.get('input[name="password"]').type('pruebasautomatizadas')
+      cy.wait(2000)
+      cy.get('button[class="login gh-btn gh-btn-blue gh-btn-block gh-btn-icon ember-view"]').click()
+      cy.wait(2000)
+      cy.get('a[href="#/staff/"][class="ember-view"]').click()
+      cy.wait(2000)
+      cy.get('a[href="#/staff/pruebas/"]').click()
+      cy.wait(2000)
+      cy.get('input[id="user-name"]').clear().type('pruebas automatizadas 2',{force: true})
+      cy.wait(2000)
+      cy.get('button[class="gh-btn gh-btn-blue gh-btn-icon ember-view"]').click()
+      cy.wait(2000)
+      cy.get(".gh-canvas-title > a[href='#/staff/']").click();
+      cy.wait(2000)
+    })
+})
